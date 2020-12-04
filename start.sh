@@ -55,21 +55,21 @@ load_web_password_secret
 generate_password
 validate_env || exit 1
 prepare_configs
-change_setting "PIHOLE_INTERFACE" "$PIHOLE_INTERFACE"
-change_setting "IPV4_ADDRESS" "$IPV4_ADDRESS"
-change_setting "QUERY_LOGGING" "$QUERY_LOGGING"
-change_setting "INSTALL_WEB_SERVER" "$INSTALL_WEB_SERVER"
-change_setting "INSTALL_WEB_INTERFACE" "$INSTALL_WEB_INTERFACE"
-change_setting "LIGHTTPD_ENABLED" "$LIGHTTPD_ENABLED"
-change_setting "IPV4_ADDRESS" "$ServerIP"
-change_setting "IPV6_ADDRESS" "$ServerIPv6"
-change_setting "DNS_BOGUS_PRIV" "$DNS_BOGUS_PRIV"
-change_setting "DNS_FQDN_REQUIRED" "$DNS_FQDN_REQUIRED"
-change_setting "DNSSEC" "$DNSSEC"
-change_setting "REV_SERVER" "$REV_SERVER"
-change_setting "REV_SERVER_DOMAIN" "$REV_SERVER_DOMAIN"
-change_setting "REV_SERVER_TARGET" "$REV_SERVER_TARGET"
-change_setting "REV_SERVER_CIDR" "$REV_SERVER_CIDR"
+[ ! -z "${PIHOLE_INTERFACE+x}" ] && change_setting "PIHOLE_INTERFACE" "$PIHOLE_INTERFACE"
+[ ! -z "${IPV4_ADDRESS+x}" ] && change_setting "IPV4_ADDRESS" "$IPV4_ADDRESS"
+[ ! -z "${QUERY_LOGGING+x}" ] && change_setting "QUERY_LOGGING" "$QUERY_LOGGING"
+[ ! -z "${INSTALL_WEB_SERVER+x}" ] && change_setting "INSTALL_WEB_SERVER" "$INSTALL_WEB_SERVER"
+[ ! -z "${INSTALL_WEB_INTERFACE+x}" ] && change_setting "INSTALL_WEB_INTERFACE" "$INSTALL_WEB_INTERFACE"
+[ ! -z "${LIGHTTPD_ENABLED+x}" ] && change_setting "LIGHTTPD_ENABLED" "$LIGHTTPD_ENABLED"
+[ ! -z "${ServerIP+x}" ] && change_setting "IPV4_ADDRESS" "$ServerIP"
+[ ! -z "${ServerIPv6+x}" ] && change_setting "IPV6_ADDRESS" "$ServerIPv6"
+[ ! -z "${DNS_BOGUS_PRIV+x}" ] && change_setting "DNS_BOGUS_PRIV" "$DNS_BOGUS_PRIV"
+[ ! -z "${DNS_FQDN_REQUIRED+x}" ] && change_setting "DNS_FQDN_REQUIRED" "$DNS_FQDN_REQUIRED"
+[ ! -z "${DNSSEC+x}" ] && change_setting "DNSSEC" "$DNSSEC"
+[ ! -z "${REV_SERVER+x}" ] && change_setting "REV_SERVER" "$REV_SERVER"
+[ ! -z "${REV_SERVER_DOMAIN+x}" ] && change_setting "REV_SERVER_DOMAIN" "$REV_SERVER_DOMAIN"
+[ ! -z "${REV_SERVER_TARGET+x}" ] && change_setting "REV_SERVER_TARGET" "$REV_SERVER_TARGET"
+[ ! -z "${REV_SERVER_CIDR+x}" ] && change_setting "REV_SERVER_CIDR" "$REV_SERVER_CIDR"
 if [ -z "$REV_SERVER" ];then
     # If the REV_SERVER* variables are set, then there is no need to add these.
     # If it is not set, then adding these variables is fine, and they will be converted by the Pi-hole install script
